@@ -4,8 +4,7 @@ import { CoyoteBoard } from './board';
 
 const App = Client({
   game: Coyote,
-  board: CoyoteBoard,
-  multiplayer: { server: 'localhost:8000' },
+  board: CoyoteBoard
 });
 
 export default App;
