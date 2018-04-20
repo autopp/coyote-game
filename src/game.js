@@ -1,4 +1,4 @@
-import { Game } from 'boardgame.io/core';
+import { Game, PlayerView } from 'boardgame.io/core';
 
 const DOUBLE = 'x2';
 const MAX_ZERO = 'MAX -> 0';
@@ -13,11 +13,20 @@ const ALL_CARDS = [
 ];
 
 export const Coyote = Game({
-  setup: () => {},
+  setup: (ctx) => {
+    let cards = ctx.random.Shuffle(ALL_CARDS);
+    let players = {};
+    for (let i = 0; i < ctx.numPlayers; i++) {
+      players[`${i}`] = { card: cards[i] };
+    }
+    return { count: 0, players: players };
+  },
 
   moves: {
   },
 
   flow: {
   },
+
+  playerView: PlayerView.STRIP_SECRETS
 });
