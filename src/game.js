@@ -1,4 +1,4 @@
-import { Game, PlayerView } from 'boardgame.io/core';
+import { Game } from 'boardgame.io/core';
 
 const DOUBLE = 'x2';
 const MAX_ZERO = 'MAX -> 0';
@@ -28,5 +28,9 @@ export const Coyote = Game({
   flow: {
   },
 
-  playerView: PlayerView.STRIP_SECRETS
+  playerView: (G, ctx, playerID) => {
+    let playersStriped = Object.assign({}, G.players);
+    delete playersStriped[playerID];
+    return { ...G, players: playersStriped };
+  }
 });
