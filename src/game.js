@@ -24,7 +24,7 @@ export const Coyote = Game({
 
   moves: {
     sayNumber(G, ctx, number) {
-      return { G..., count: number };
+      return { G..., count: number, lastPlayer: ctx.currentPlayer };
     }
   },
 
