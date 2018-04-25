@@ -16,12 +16,13 @@ export class CoyoteBoard extends React.Component {
       playerCards.push(<div key={playerID}>player {playerID}: {this.props.G.players[playerID].card}</div>)
     }
     let message = <div>current player: {this.props.ctx.currentPlayer}</div>;
-    let input = <div><input type="number" value={this.state.inputNumber} min={this.props.G.count + 1} step="1"  onChange={this.onChange}/></div>;
+    let input = <input type="number" value={this.state.inputNumber} min={this.props.G.count + 1} step="1"  onChange={this.onChange}/>;
+    let numberButton = <button type="button" onClick={this.onClickNumber}>Say number</button>;
     return (
       <div>
         {playerCards}
         {message}
-        {input}
+        <div>{input}{numberButton}</div>
       </div>
     );
   }
