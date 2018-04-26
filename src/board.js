@@ -10,6 +10,11 @@ export class CoyoteBoard extends React.Component {
     this.setState({ inputNumber: parseInt(e.target.value, 10) });
   }
 
+  onClickNumber(e) {
+    this.props.moves.sayNumber(this.state.inputNumber);
+    this.props.events.endTurn();
+  }
+
   render() {
     let playerCards = [];
     for (let playerID in this.props.G.players) {
@@ -17,7 +22,7 @@ export class CoyoteBoard extends React.Component {
     }
     let message = <div>current player: {this.props.ctx.currentPlayer}</div>;
     let input = <input type="number" value={this.state.inputNumber} min={this.props.G.count + 1} step="1"  onChange={this.onChange}/>;
-    let numberButton = <button type="button" onClick={this.onClickNumber}>Say number</button>;
+    let numberButton = <button type="button" onClick={(e) => this.onClickNumber(e)}>Say number</button>;
     return (
       <div>
         {playerCards}
