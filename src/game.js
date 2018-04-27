@@ -29,11 +29,5 @@ export const Coyote = Game({
   },
 
   flow: {
-  },
-
-  playerView: (G, ctx, playerID) => {
-    let playersStriped = Object.assign({}, G.players);
-    delete playersStriped[playerID];
-    return { ...G, players: playersStriped };
   }
 });
