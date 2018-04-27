@@ -17,6 +17,7 @@ export class CoyoteBoard extends React.Component {
   }
 
   render() {
+    let count = <div>count: {this.props.G.count}</div>
     let playerCards = [];
     for (let playerID in this.props.G.players) {
       playerCards.push(<div key={playerID}>player {playerID}: {this.props.G.players[playerID].card}</div>)
@@ -26,6 +27,7 @@ export class CoyoteBoard extends React.Component {
     let numberButton = <button type="button" onClick={(e) => this.onClickNumber(e)}>Say number</button>;
     return (
       <div>
+        {count}
         {playerCards}
         {message}
         <div>{input}{numberButton}</div>
