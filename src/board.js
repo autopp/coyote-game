@@ -13,6 +13,7 @@ export class CoyoteBoard extends React.Component {
   onClickNumber(e) {
     this.props.moves.sayNumber(this.state.inputNumber);
     this.props.events.endTurn();
+    this.setState({ inputNumber: this.state.inputNumber + 1 });
   }
 
   render() {
