@@ -12,6 +12,38 @@ const ALL_CARDS = [
   -5, -5, -10, DOUBLE, MAX_ZERO, RANDOM
 ];
 
+function aggregate(G) {
+  let random
+  let existMaxZero = false;
+  let existDouble = false;
+
+  let numberCards = [];
+  for (let playerID in G.players) {
+    let card = players[playerID].card;
+    if (typeof(card) === 'number') {
+      numberCards.push(card);
+    } else if (card === RANDOM) {
+      numberCards.push(G.randomCard);
+    } else if (card === MAX_ZERO) {
+      existMaxZero = true;
+    } else if (card === DOUBLE) {
+      existDouble = true;
+    } else {
+      throw `unknown card: ${card}`;
+    }
+  }
+
+  let max = Math.max.apply(null, cards);
+  let sum = 0;
+  cards.forEach(card => {
+    if (existMaxZero && card == max) {
+      sum += card;
+    };
+  });
+
+  return count;
+}
+
 export const Coyote = Game({
   setup: (ctx) => {
     let cards = ctx.random.Shuffle(ALL_CARDS);
@@ -19,7 +51,7 @@ export const Coyote = Game({
     for (let i = 0; i < ctx.numPlayers; i++) {
       players[`${i}`] = { card: cards[i] };
     }
-    return { count: 0, players: players };
+    return { count: 0, players: players, randomCard: cards[ctx.numPlayers] };
   },
 
   moves: {
