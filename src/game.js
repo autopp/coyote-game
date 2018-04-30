@@ -65,5 +65,10 @@ export const Coyote = Game({
   },
 
   flow: {
+    endGameIf: (G, ctx) => {
+      if (G.coyotePlayer !== undefined) {
+        return G.count > aggregate(G) ? ctx.coyotePlayer : ctx.currentPlayer;
+      }
+    }
   }
 });
