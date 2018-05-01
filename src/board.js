@@ -39,6 +39,7 @@ export class CoyoteBoard extends React.Component {
         {message}
         <div>{input}{numberButton}</div>
         <div>{coyoteButton}</div>
+        <div>Lose: {this.props.ctx.gameover}</div>
       </div>
     );
   }
