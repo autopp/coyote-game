@@ -19,7 +19,7 @@ function aggregate(G) {
 
   let numberCards = [];
   for (let playerID in G.players) {
-    let card = players[playerID].card;
+    let card = G.players[playerID].card;
     if (typeof(card) === 'number') {
       numberCards.push(card);
     } else if (card === RANDOM) {
@@ -33,15 +33,15 @@ function aggregate(G) {
     }
   }
 
-  let max = Math.max.apply(null, cards);
+  let max = Math.max.apply(null, numberCards);
   let sum = 0;
-  cards.forEach(card => {
-    if (existMaxZero && card == max) {
+  numberCards.forEach((card) => {
+    if (!existMaxZero || card != max) {
       sum += card;
     };
   });
 
-  return count;
+  return sum;
 }
 
 export const Coyote = Game({
