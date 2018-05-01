@@ -16,6 +16,11 @@ export class CoyoteBoard extends React.Component {
     this.setState({ inputNumber: this.state.inputNumber + 1 });
   }
 
+  onClickCoyote(e) {
+    this.props.moves.sayCoyote();
+    this.props.events.endTurn();
+  }
+
   render() {
     let count = <div>count: {this.props.G.count}</div>
     let playerCards = [];
@@ -26,12 +31,14 @@ export class CoyoteBoard extends React.Component {
     let message = <div>current player: {this.props.ctx.currentPlayer}</div>;
     let input = <input type="number" value={this.state.inputNumber} min={this.props.G.count + 1} step="1"  onChange={this.onChange}/>;
     let numberButton = <button type="button" onClick={(e) => this.onClickNumber(e)}>Say number</button>;
+    let coyoteButton = <button type="button" onClick={(e) => this.onClickCoyote(e)}>Say coyote</button>;
     return (
       <div>
         {count}
         {playerCards}
         {message}
         <div>{input}{numberButton}</div>
+        <div>{coyoteButton}</div>
       </div>
     );
   }
