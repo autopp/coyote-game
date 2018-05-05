@@ -28,14 +28,14 @@ function aggregate(G) {
     } else if (card === DOUBLE) {
       existDouble = true;
     } else {
-      throw `unknown card: ${card}`;
+      throw new Error(`unknown card: ${card}`);
     }
   }
 
   let max = Math.max.apply(null, numberCards);
   let sum = 0;
   numberCards.forEach((card) => {
-    if (!existMaxZero || card != max) {
+    if (!existMaxZero || card !== max) {
       sum += card;
     };
   });
