@@ -13,7 +13,6 @@ const ALL_CARDS = [
 ];
 
 function aggregate(G) {
-  let random
   let existMaxZero = false;
   let existDouble = false;
 
@@ -41,7 +40,7 @@ function aggregate(G) {
     };
   });
 
-  return sum;
+  return existDouble ? sum * 2 : sum;
 }
 
 export const Coyote = Game({
