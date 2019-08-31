@@ -39,7 +39,9 @@ export class CoyoteBoard extends React.Component {
         {message}
         <div>{input}{numberButton}</div>
         <div>{coyoteButton}</div>
+        <div>Previous turn: player{this.props.G.lastPlayer} say {this.props.G.coyoteTargetPlayer !== undefined ? "coyote with " + this.props.G.count : this.props.G.count}</div>
         <div>Lose: {this.props.ctx.gameover}</div>
+        <div>Total: {this.props.G.total}</div>
       </div>
     );
   }
