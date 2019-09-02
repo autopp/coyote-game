@@ -6,7 +6,7 @@
     "boardgame.io": "^0.32.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "^3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,5 +17,17 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-zero": "^0.2.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
