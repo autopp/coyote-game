@@ -55,18 +55,18 @@ export const Coyote = Game({
 
   moves: {
     sayNumber(G, ctx, number) {
-      return { ...G, count: number, lastPlayer: ctx.currentPlayer };
+      return { ...G, count: number, lastPlayer: ctx.currentPlayer, total: aggregate(G) };
     },
 
     sayCoyote(G, ctx) {
-      return { ...G, coyotePlayer: ctx.currentPlayer };
+      return { ...G, coyoteTargetPlayer: G.lastPlayer, lastPlayer: ctx.currentPlayer };
     }
   },
 
   flow: {
     endGameIf: (G, ctx) => {
-      if (G.coyotePlayer !== undefined) {
-        return G.count > aggregate(G) ? ctx.coyotePlayer : ctx.currentPlayer;
+      if (G.coyoteTargetPlayer !== undefined){
+        return G.count > aggregate(G) ? G.coyoteTargetPlayer : G.lastPlayer;
       }
     }
   }
